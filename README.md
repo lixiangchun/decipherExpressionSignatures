@@ -10,8 +10,33 @@ For more information on application of NMF, please refer to the following public
 4. Carmona-Saez P, Pascual-Marqui RD, Tirado F, et al: Biclustering of gene expression data by Non-smooth Non-negative Matrix Factorization. BMC Bioinformatics 7:78, 2006
 
 
+Check 'example.sh' to see how to run this program in detail. When finished running 'example.sh', an output directory, termed 'output',
+can be found, in which all of result files are placed.
 
 
+#######################example.sh########################
+#!/bin/bash
 
-Want to know how to run this program? check example.sh in detail.
+# The row and column names of input file, each must be unique.
+rowNameFile='../decipherMutationalSignatures/rowNames'
+colNameFile='../decipherMutationalSignatures/sampleNames'
+
+# Input file, e.g. genes by samples matrix
+inputFile='../decipherMutationalSignatures/originalGenomes'
+
+kstart=2    # the start rank of NMF
+kend=5      # the end rank of NMF
+nloop=100   # Number of iterations to run NMF for each rank
+
+algorithm=gdclsNMF        # algorithm to used, i.e. brunet, sNMFR, gdclsNMF, mult, als
+transposeInputMatrix=0    # 1 - transpose, 0 - do not transpose
+verbose=1
+maxiter=10000
+
+# Change these accordingly.
+MCRroot=/ifshk1/BC_CANCER/03user/lixiangchun/Software/INSTALL/MCR_R2013a/INSTALL/v81
+DES_PATH=/ifshk1/BC_CANCER/03user/lixiangchun/iCGA/v0.02/decipherExpressionSignatures
+bash $DES_PATH/run_decipherExpressionSignatures.sh $MCRroot $rowNameFile $colNameFile $inputFile $kstart $kend $nloop $algorithm $transposeInputMatrix $verbose $maxiter
+
+
 
