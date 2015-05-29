@@ -16,8 +16,10 @@ transposeInputMatrix=0    # 1 - transpose, 0 - do not transpose
 verbose=1
 maxiter=10000
 
+# Change these variables accordingly
 MCRroot=/ifshk1/BC_CANCER/03user/lixiangchun/Software/INSTALL/MCR_R2013a/INSTALL/v81
 DES_PATH=/ifshk1/BC_CANCER/03user/lixiangchun/iCGA/v0.02/decipherExpressionSignatures
+
 bash $DES_PATH/run_decipherExpressionSignatures.sh $MCRroot $rowNameFile $colNameFile $inputFile $kstart $kend $nloop $algorithm $transposeInputMatrix $verbose $maxiter
 
 
